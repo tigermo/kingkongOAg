@@ -32,7 +32,20 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
        			 checkConnection();
+				 document.addEventListener("backbutton", onBackKeyDown, false);
           }
+
+		  
+    
+	  function onBackKeyDown() { //
+        var truthBeTold = window.confirm("退出？"); 
+		if (truthBeTold) { 
+		navigator.app.exitApp();
+			} else {
+			 //  navigator.notification.vibrate(1000);
+			}
+		}
+
     	 function checkConnection() {
          var networkState = navigator.network.connection.type;
          var states = {};
@@ -50,7 +63,7 @@
          	}
          else{
              location.href="http://oa.12.ac.cn/index.php?t=mobile";
-              alert('网络类型: ' + states[networkState]);
+            //  alert('网络类型: ' + states[networkState]);
          }
      }
      </script>
