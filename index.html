@@ -32,20 +32,7 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
        			 checkConnection();
-				 document.addEventListener("backbutton", onBackKeyDown, false);
           }
-
-		  
-    
-	  function onBackKeyDown() { //
-        var truthBeTold = window.confirm("退出？"); 
-		if (truthBeTold) { 
-		navigator.app.exitApp();
-			} else {
-			 //  navigator.notification.vibrate(1000);
-			}
-		}
-
     	 function checkConnection() {
          var networkState = navigator.network.connection.type;
          var states = {};
@@ -57,13 +44,13 @@
          states[Connection.CELL_4G]    = '4G 网络';
          states[Connection.NONE]       = '未开启网络连接';
 
-         if(networkState == Connection.NONE ){
-             alert(states[networkState]);
-             navigator.app.exitApp();
-         	}
-         else{
+         if(networkState != Connection.NONE ){
              location.href="http://oa.12.ac.cn/index.php?t=mobile";
             //  alert('网络类型: ' + states[networkState]);
+         	}
+         else{
+             alert(states[networkState]);
+             navigator.app.exitApp();
          }
      }
      </script>
